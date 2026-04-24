@@ -15,8 +15,10 @@ namespace ElmplotyeesManagment
     {
         public clsEmployee employee1 = new clsEmployee();
         public bool isModifyCompleted = false;
-        public frmModifyEmployeeInfo()
+        public clsEmployee OriginalEmployee1;
+        public frmModifyEmployeeInfo(in clsEmployee OriginalEmployee1)
         {
+            this.OriginalEmployee1 = OriginalEmployee1;
             InitializeComponent();
         }
         private clsEmployee GetNewEmployeeInformation()
@@ -87,6 +89,14 @@ namespace ElmplotyeesManagment
                 PerformeBadTextMessage(sender as TextBox);
             else if (sender == txtEmail)
                 PerformeBadTextMessage(sender as TextBox);
+        }
+
+        private void frmModifyEmployeeInfo_Load(object sender, EventArgs e)
+        {
+            this.txtFullName.Text = this.OriginalEmployee1.FullName;
+            this.txtEmail.Text = this.OriginalEmployee1.Email;
+            this.txtPhone.Text = this.OriginalEmployee1.Phone;
+            this.BirthDatePicker.Value = this.OriginalEmployee1.BirthDate;
         }
 
         private void frmModifyEmployeeInfo_FormClosing(object sender, FormClosingEventArgs e)

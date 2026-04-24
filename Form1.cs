@@ -29,7 +29,7 @@ namespace ElmplotyeesManagment
             List,
             Tail
         }
-        
+
         private enum GenderType
         {
             Male = 0,
@@ -47,13 +47,10 @@ namespace ElmplotyeesManagment
         }
         private bool isEmployeeExist(clsEmployee employee)
         {
-            if (!EmployeesSet.Contains(employee.Email) && !EmployeesSet.Contains(employee.Phone))
-            {
-                EmployeesSet.Add(employee.Email);
-                EmployeesSet.Add(employee.Phone);
-                return false;
-            }
-            return true;
+            if (EmployeesSet.Contains(employee.Email) || EmployeesSet.Contains(employee.Phone))
+                return true;
+
+            return false;
         }
         private ListViewItem FillEmployeeViewList(clsEmployee Employee)
         {
@@ -74,9 +71,12 @@ namespace ElmplotyeesManagment
 
         private void AddEmployee(clsEmployee Employee)
         {
+            EmployeesSet.Add(Employee.Email);
+            EmployeesSet.Add(Employee.Phone);
+            ListEmployees.Add(Employee);
             listView1.Items.Add(FillEmployeeViewList(Employee));
         }
-        private bool TryAddEmployee(in string FullName, in string Phone, in int ID, in string Gender, in DateTime BirthDate,in string Email)
+        private bool TryAddEmployee(in string FullName, in string Phone, in int ID, in string Gender, in DateTime BirthDate, in string Email)
         {
             clsEmployee employee = new clsEmployee();
             employee.FullName = FullName;
@@ -88,45 +88,38 @@ namespace ElmplotyeesManagment
 
             if (!isEmployeeExist(employee))
             {
-                ListEmployees.Add(employee);
                 AddEmployee(employee);
                 return true;
             }
-            else
-                MessageBox.Show("Employee with this information already exists!", "Employee information", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return false;
         }
-        private void ShowBadTextMessage(TextBox text)
+        private void PerformInvalidInput(TextBox text)
         {
             text.ForeColor = Color.Red;
             text.Focus();
             SystemSounds.Beep.Play();
         }
-        private void PerformeBadTextMessage(TextBox text)
+        private bool IsValidInput(TextBox text)
         {
             string Namepattern = @"^[a-zA-Z\s\'\-]*$";
             string EmailPattern = @"^(([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+))?$";
             string PhonePattern = @"^(\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4}))?$";
 
-            if (text == txtFullName && !Regex.IsMatch(text.Text, Namepattern))
+            if (text == txtFullName && !Regex.IsMatch(text.Text, Namepattern)
+                || text == txtEmail && !Regex.IsMatch(text.Text, EmailPattern)
+                || text == txtPhone && !Regex.IsMatch(text.Text, PhonePattern))
             {
-                ShowBadTextMessage(text);
+                PerformInvalidInput(text);
+                return false;
             }
-            else if(text == txtEmail && !Regex.IsMatch(text.Text, EmailPattern))
-            {
-                ShowBadTextMessage(text);
-            }
-            else if(text == txtPhone && !Regex.IsMatch(text.Text, PhonePattern))
-            {
-                ShowBadTextMessage(text);
-            }
+            return true;
 
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            
-            if(isInformationFilled())
+
+            if (isInformationFilled() && IsValidInput(txtEmail) && IsValidInput(txtPhone)) 
             {
                 if (TryAddEmployee(txtFullName.Text, txtPhone.Text, new Random().Next(1000, int.MaxValue),
                     gpGenderPicker.Controls.OfType<RadioButton>().Where(rb => rb.Checked).FirstOrDefault().Text,
@@ -138,8 +131,8 @@ namespace ElmplotyeesManagment
                 }
                 else
                 {
-                    ShowBadTextMessage(txtPhone);
-                    ShowBadTextMessage(txtEmail);
+                    MessageBox.Show("Employee with this information already exists!", "Employee information"
+                        , MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -150,12 +143,12 @@ namespace ElmplotyeesManagment
         private void Check_BadText(object sender, EventArgs e)
         {
             if (sender == txtFullName)
-                PerformeBadTextMessage(sender as TextBox);
+                IsValidInput(sender as TextBox);
             else if (sender == txtPhone)
-                PerformeBadTextMessage(sender as TextBox);
+                IsValidInput(sender as TextBox);
             else if (sender == txtEmail)
-                PerformeBadTextMessage(sender as TextBox);
-            
+                IsValidInput(sender as TextBox);
+
         }
         private void cbViewType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -187,7 +180,7 @@ namespace ElmplotyeesManagment
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cbViewType.SelectedIndex = (int)ViewType.Details; 
+            cbViewType.SelectedIndex = (int)ViewType.Details;
         }
         private void FillSelectedEmployeeCard(in clsEmployee employee)
         {
@@ -235,7 +228,7 @@ namespace ElmplotyeesManagment
                         RemoveEmployee(SelectedEmployee[i]);
                 }
             }
-            
+
         }
 
         private void listView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -244,27 +237,23 @@ namespace ElmplotyeesManagment
         }
         private void Modify(int ItemIndex)
         {
-            frmModifyEmployeeInfo form = new frmModifyEmployeeInfo();
+            frmModifyEmployeeInfo form = new frmModifyEmployeeInfo(ListEmployees[ItemIndex]);
             form.ShowDialog();
             if (form.isModifyCompleted)
             {
                 EmployeesSet.Remove(ListEmployees[ItemIndex].Email);
                 EmployeesSet.Remove(ListEmployees[ItemIndex].Phone);
 
-                if (isEmployeeExist(form.employee1))
+                if (!isEmployeeExist(form.employee1))
                 {
                     form.employee1.ID = ListEmployees[ItemIndex].ID;
                     ListEmployees[ItemIndex] = form.employee1;
                     listView1.Items[ItemIndex] = FillEmployeeViewList(form.employee1);
                 }
                 else
-                    return;
+                    MessageBox.Show("Employee with this information already exists!", "Employee information", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
-            {
-                MessageBox.Show("Employee with this information already exists!", "Employee information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            
         }
         private void btnModify_Click(object sender, EventArgs e)
         {

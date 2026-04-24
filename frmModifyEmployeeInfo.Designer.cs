@@ -212,6 +212,7 @@
             this.Name = "frmModifyEmployeeInfo";
             this.Text = "Modify Information";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmModifyEmployeeInfo_FormClosing);
+            this.Load += new System.EventHandler(this.frmModifyEmployeeInfo_Load);
             this.gpEmployeeInformation.ResumeLayout(false);
             this.gpEmployeeInformation.PerformLayout();
             this.gpGenderPicker.ResumeLayout(false);
