@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmModifyEmployeeInfo));
             this.gpEmployeeInformation = new System.Windows.Forms.GroupBox();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnModify = new System.Windows.Forms.Button();
             this.lblNote = new System.Windows.Forms.Label();
             this.gpGenderPicker = new System.Windows.Forms.GroupBox();
@@ -49,6 +50,7 @@
             // 
             // gpEmployeeInformation
             // 
+            this.gpEmployeeInformation.Controls.Add(this.btnCancel);
             this.gpEmployeeInformation.Controls.Add(this.btnModify);
             this.gpEmployeeInformation.Controls.Add(this.lblNote);
             this.gpEmployeeInformation.Controls.Add(this.gpGenderPicker);
@@ -68,11 +70,24 @@
             this.gpEmployeeInformation.TabStop = false;
             this.gpEmployeeInformation.Text = "Employee Information";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.Tan;
+            this.btnCancel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(237, 229);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(169, 51);
+            this.btnCancel.TabIndex = 20;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // btnModify
             // 
             this.btnModify.BackColor = System.Drawing.Color.Tan;
+            this.btnModify.Enabled = false;
             this.btnModify.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModify.Location = new System.Drawing.Point(142, 223);
+            this.btnModify.Location = new System.Drawing.Point(29, 229);
             this.btnModify.Name = "btnModify";
             this.btnModify.Size = new System.Drawing.Size(169, 51);
             this.btnModify.TabIndex = 11;
@@ -101,6 +116,7 @@
             this.gpGenderPicker.TabIndex = 18;
             this.gpGenderPicker.TabStop = false;
             this.gpGenderPicker.Text = "Gender";
+            this.gpGenderPicker.MouseCaptureChanged += new System.EventHandler(this.Information_Change_Captured);
             // 
             // rbFemale
             // 
@@ -111,6 +127,7 @@
             this.rbFemale.TabIndex = 1;
             this.rbFemale.Text = "Female";
             this.rbFemale.UseVisualStyleBackColor = true;
+            this.rbFemale.MouseCaptureChanged += new System.EventHandler(this.Information_Change_Captured);
             // 
             // rbMale
             // 
@@ -123,6 +140,7 @@
             this.rbMale.TabStop = true;
             this.rbMale.Text = "Male";
             this.rbMale.UseVisualStyleBackColor = true;
+            this.rbMale.MouseCaptureChanged += new System.EventHandler(this.Information_Change_Captured);
             // 
             // BirthDatePicker
             // 
@@ -134,6 +152,7 @@
             this.BirthDatePicker.Size = new System.Drawing.Size(144, 21);
             this.BirthDatePicker.TabIndex = 17;
             this.BirthDatePicker.Value = new System.DateTime(2008, 12, 31, 0, 0, 0, 0);
+            this.BirthDatePicker.MouseCaptureChanged += new System.EventHandler(this.Information_Change_Captured);
             // 
             // lblBirthDate
             // 
@@ -144,6 +163,7 @@
             this.lblBirthDate.Size = new System.Drawing.Size(90, 15);
             this.lblBirthDate.TabIndex = 16;
             this.lblBirthDate.Text = "Date of birth:";
+            this.lblBirthDate.MouseCaptureChanged += new System.EventHandler(this.Information_Change_Captured);
             // 
             // txtEmail
             // 
@@ -152,6 +172,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(147, 20);
             this.txtEmail.TabIndex = 15;
+            this.txtEmail.MouseCaptureChanged += new System.EventHandler(this.Information_Change_Captured);
             this.txtEmail.Validated += new System.EventHandler(this.Check_BadText);
             // 
             // txtPhone
@@ -161,6 +182,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(147, 20);
             this.txtPhone.TabIndex = 14;
+            this.txtPhone.MouseCaptureChanged += new System.EventHandler(this.Information_Change_Captured);
             this.txtPhone.Validated += new System.EventHandler(this.Check_BadText);
             // 
             // txtFullName
@@ -170,6 +192,7 @@
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.Size = new System.Drawing.Size(147, 20);
             this.txtFullName.TabIndex = 13;
+            this.txtFullName.MouseCaptureChanged += new System.EventHandler(this.Information_Change_Captured);
             this.txtFullName.Validated += new System.EventHandler(this.Check_BadText);
             // 
             // lbl_Email
@@ -181,6 +204,7 @@
             this.lbl_Email.Size = new System.Drawing.Size(53, 15);
             this.lbl_Email.TabIndex = 12;
             this.lbl_Email.Text = "E-mail:";
+            this.lbl_Email.MouseCaptureChanged += new System.EventHandler(this.Information_Change_Captured);
             // 
             // lbl_Phone
             // 
@@ -191,6 +215,7 @@
             this.lbl_Phone.Size = new System.Drawing.Size(52, 15);
             this.lbl_Phone.TabIndex = 11;
             this.lbl_Phone.Text = "Phone:";
+            this.lbl_Phone.MouseCaptureChanged += new System.EventHandler(this.Information_Change_Captured);
             // 
             // lblFullName
             // 
@@ -201,6 +226,7 @@
             this.lblFullName.Size = new System.Drawing.Size(77, 15);
             this.lblFullName.TabIndex = 10;
             this.lblFullName.Text = "Full Name:";
+            this.lblFullName.MouseCaptureChanged += new System.EventHandler(this.Information_Change_Captured);
             // 
             // frmModifyEmployeeInfo
             // 
@@ -237,5 +263,6 @@
         private System.Windows.Forms.Label lbl_Email;
         private System.Windows.Forms.Label lbl_Phone;
         private System.Windows.Forms.Label lblFullName;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

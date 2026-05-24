@@ -45,9 +45,13 @@ namespace ElmplotyeesManagment
                 || string.IsNullOrEmpty(txtPhone.Text)
                 || string.IsNullOrEmpty(txtEmail.Text));
         }
+        private bool isInformationExists(string InfoToCheck)
+        {
+            return EmployeesSet.Contains(InfoToCheck);
+        }
         private bool isEmployeeExist(clsEmployee employee)
         {
-            if (EmployeesSet.Contains(employee.Email) || EmployeesSet.Contains(employee.Phone))
+            if (isInformationExists(employee.Email) || isInformationExists(employee.Phone))
                 return true;
 
             return false;
@@ -235,25 +239,44 @@ namespace ElmplotyeesManagment
         {
             FillSelectedEmployeeCard(ListEmployees[e.ItemIndex]);
         }
+
+        private void ShowEmployeeExistsMessage(in string text, in string caption)
+        {
+            MessageBox.Show(text, caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        private void ApplyModification(int ItemIndex, clsEmployee employee)
+        {
+            EmployeesSet.Remove(ListEmployees[ItemIndex].Email);
+            EmployeesSet.Remove(ListEmployees[ItemIndex].Phone);
+            employee.ID = ListEmployees[ItemIndex].ID;
+            ListEmployees[ItemIndex] = employee;
+            listView1.Items[ItemIndex] = FillEmployeeViewList(employee);
+            EmployeesSet.Add(employee.Email);
+            EmployeesSet.Add(employee.Phone);
+        }
         private void Modify(int ItemIndex)
         {
             frmModifyEmployeeInfo form = new frmModifyEmployeeInfo(ListEmployees[ItemIndex]);
             form.ShowDialog();
             if (form.isModifyCompleted)
             {
-                EmployeesSet.Remove(ListEmployees[ItemIndex].Email);
-                EmployeesSet.Remove(ListEmployees[ItemIndex].Phone);
 
-                if (!isEmployeeExist(form.employee1))
+
+                if ((form.employee.Email != ListEmployees[ItemIndex].Email) && isInformationExists(form.employee.Email))
                 {
-                    form.employee1.ID = ListEmployees[ItemIndex].ID;
-                    ListEmployees[ItemIndex] = form.employee1;
-                    listView1.Items[ItemIndex] = FillEmployeeViewList(form.employee1);
+                    ShowEmployeeExistsMessage("Employee with this Email already exists!", "Employee information");
+                    return;
                 }
-                else
-                    MessageBox.Show("Employee with this information already exists!", "Employee information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if ((form.employee.Phone != ListEmployees[ItemIndex].Phone) && isInformationExists(form.employee.Phone))
+                {
+                    ShowEmployeeExistsMessage("Employee with this Phone already exists!", "Employee information");
+                    return;
+                }
+
+                ApplyModification(ItemIndex, form.employee);
+
             }
-            
+
         }
         private void btnModify_Click(object sender, EventArgs e)
         {

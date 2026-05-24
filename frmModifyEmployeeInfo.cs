@@ -13,12 +13,12 @@ namespace ElmplotyeesManagment
 {
     partial class frmModifyEmployeeInfo : Form
     {
-        public clsEmployee employee1 = new clsEmployee();
+        public clsEmployee employee = new clsEmployee();
         public bool isModifyCompleted = false;
-        public clsEmployee OriginalEmployee1;
+        public clsEmployee OriginalEmployee;
         public frmModifyEmployeeInfo(in clsEmployee OriginalEmployee1)
         {
-            this.OriginalEmployee1 = OriginalEmployee1;
+            this.OriginalEmployee = OriginalEmployee1;
             InitializeComponent();
         }
         private clsEmployee GetNewEmployeeInformation()
@@ -32,7 +32,8 @@ namespace ElmplotyeesManagment
                 employee.Gender = rbMale.Text;
             else
                 employee.Gender = rbFemale.Text;
-            return employee;
+
+                return employee;
         }
         private bool isInformationFilled()
         {
@@ -47,7 +48,7 @@ namespace ElmplotyeesManagment
                 if (MessageBox.Show("Are you sure from this changes?", "Modify information",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    employee1 = GetNewEmployeeInformation();
+                    employee = GetNewEmployeeInformation();
                     isModifyCompleted = true;
                     this.Close();
                 }
@@ -93,16 +94,30 @@ namespace ElmplotyeesManagment
 
         private void frmModifyEmployeeInfo_Load(object sender, EventArgs e)
         {
-            this.txtFullName.Text = this.OriginalEmployee1.FullName;
-            this.txtEmail.Text = this.OriginalEmployee1.Email;
-            this.txtPhone.Text = this.OriginalEmployee1.Phone;
-            this.BirthDatePicker.Value = this.OriginalEmployee1.BirthDate;
+            this.txtFullName.Text = this.OriginalEmployee.FullName;
+            this.txtEmail.Text = this.OriginalEmployee.Email;
+            this.txtPhone.Text = this.OriginalEmployee.Phone;
+            this.BirthDatePicker.Value = this.OriginalEmployee.BirthDate;
+            if (this.OriginalEmployee.Gender != rbMale.Text)
+                rbFemale.Checked = true;
+
         }
 
         private void frmModifyEmployeeInfo_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (employee1 == null)
+            if (employee == null)
             isModifyCompleted = false;
+        }
+
+        private void Information_Change_Captured(object sender, EventArgs e)
+        {
+            btnModify.Enabled = true;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            isModifyCompleted = false;
+            this.Close();
         }
     }
 }
