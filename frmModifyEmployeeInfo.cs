@@ -39,7 +39,7 @@ namespace ElmplotyeesManagment
         {
             return !(string.IsNullOrEmpty(txtFullName.Text)
                 || string.IsNullOrEmpty(txtPhone.Text)
-                || string.IsNullOrEmpty(txtEmail.Text));
+                || string.IsNullOrEmpty(txtEmail.Text) || (int)(DateTime.Now.Subtract(BirthDatePicker.Value).TotalDays / 365.2425) < 18);
         }
         private void btnModify_Click(object sender, EventArgs e)
         {
@@ -118,6 +118,12 @@ namespace ElmplotyeesManagment
         {
             isModifyCompleted = false;
             this.Close();
+        }
+
+        private void BirthDatePicker_Validating(object sender, CancelEventArgs e)
+        {
+            if ((int)(DateTime.Now.Subtract(BirthDatePicker.Value).TotalDays / 365.2425) < 18)
+                MessageBox.Show("Age must be over 18!", "Date Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

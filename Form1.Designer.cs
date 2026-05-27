@@ -1,4 +1,6 @@
-﻿namespace ElmplotyeesManagment
+﻿using System;
+
+namespace ElmplotyeesManagment
 {
     partial class Form1
     {
@@ -238,11 +240,12 @@
             this.BirthDatePicker.CustomFormat = "dd / MM / yyyy";
             this.BirthDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.BirthDatePicker.Location = new System.Drawing.Point(105, 102);
-            this.BirthDatePicker.MaxDate = new System.DateTime(2008, 12, 31, 0, 0, 0, 0);
+            this.BirthDatePicker.MaxDate = new System.DateTime(2026, 5, 27, 23, 30, 17, 707);
             this.BirthDatePicker.Name = "BirthDatePicker";
             this.BirthDatePicker.Size = new System.Drawing.Size(144, 21);
             this.BirthDatePicker.TabIndex = 17;
-            this.BirthDatePicker.Value = new System.DateTime(2008, 12, 31, 0, 0, 0, 0);
+            this.BirthDatePicker.Value = new System.DateTime(2026, 5, 27, 23, 30, 17, 707);
+            this.BirthDatePicker.Validating += new System.ComponentModel.CancelEventHandler(this.BirthDatePicker_Validating);
             // 
             // lblBirthDate
             // 

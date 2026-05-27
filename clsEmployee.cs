@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace ElmplotyeesManagment
         public string Phone {  get; set; }
         public int GetAge()
         {
-            return DateTime.Now.Year - BirthDate.Year;
+            return (int)(DateTime.Now.Subtract(BirthDate).TotalDays / 365.2425);
         }
         
     }
