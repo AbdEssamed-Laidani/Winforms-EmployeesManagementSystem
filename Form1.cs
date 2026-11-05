@@ -300,5 +300,21 @@ namespace ElmplotyeesManagment
             if ((int)(DateTime.Now.Subtract(BirthDatePicker.Value).TotalDays / 365.2425) < 18)
                 MessageBox.Show("Age must be over 18!", "Date Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            // حساب العرض المتاح بعد طرح مساحة شريط التمرير العمودي (حوالي 25 بكسل)
+            int totalWidth = listView1.ClientSize.Width;
+
+            // مثال لتوزيع النسب المئوية على الأعمدة الـ 7 لديك:
+            listView1.Columns[0].Width = (int)(totalWidth * 0.08); // ID (8%)
+            listView1.Columns[1].Width = (int)(totalWidth * 0.22); // Full Name (22%)
+            listView1.Columns[2].Width = (int)(totalWidth * 0.15); // Phone (15%)
+            listView1.Columns[3].Width = (int)(totalWidth * 0.25); // Email (25%)
+            listView1.Columns[4].Width = (int)(totalWidth * 0.10); // Gender (10%)
+            listView1.Columns[5].Width = (int)(totalWidth * 0.12); // Date of birth (12%)
+            listView1.Columns[6].Width = (int)(totalWidth * 0.08); // Age (8%)
+        }
+    
     }
 }

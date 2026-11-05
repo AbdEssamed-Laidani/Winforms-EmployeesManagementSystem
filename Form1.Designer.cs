@@ -80,12 +80,14 @@ namespace ElmplotyeesManagment
             this.colBirthDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.colAge = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ImListGenderLarge = new System.Windows.Forms.ImageList(this.components);
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.EmployeePicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainLogo)).BeginInit();
             this.gpEmployeeInformation.SuspendLayout();
             this.gpGenderPicker.SuspendLayout();
             this.gpEmployeeCard.SuspendLayout();
             this.gpTools.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblID
@@ -161,8 +163,9 @@ namespace ElmplotyeesManagment
             // 
             // MainLogo
             // 
+            this.MainLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MainLogo.BackColor = System.Drawing.Color.Gainsboro;
-            this.MainLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.MainLogo.Image = ((System.Drawing.Image)(resources.GetObject("MainLogo.Image")));
             this.MainLogo.Location = new System.Drawing.Point(0, 0);
             this.MainLogo.Name = "MainLogo";
@@ -183,10 +186,11 @@ namespace ElmplotyeesManagment
             this.gpEmployeeInformation.Controls.Add(this.lbl_Email);
             this.gpEmployeeInformation.Controls.Add(this.lbl_Phone);
             this.gpEmployeeInformation.Controls.Add(this.lblFullName);
+            this.gpEmployeeInformation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpEmployeeInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpEmployeeInformation.Location = new System.Drawing.Point(409, 78);
+            this.gpEmployeeInformation.Location = new System.Drawing.Point(401, 3);
             this.gpEmployeeInformation.Name = "gpEmployeeInformation";
-            this.gpEmployeeInformation.Size = new System.Drawing.Size(379, 160);
+            this.gpEmployeeInformation.Size = new System.Drawing.Size(396, 172);
             this.gpEmployeeInformation.TabIndex = 9;
             this.gpEmployeeInformation.TabStop = false;
             this.gpEmployeeInformation.Text = "Employee Information";
@@ -204,6 +208,7 @@ namespace ElmplotyeesManagment
             // 
             // gpGenderPicker
             // 
+            this.gpGenderPicker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.gpGenderPicker.Controls.Add(this.rbFemale);
             this.gpGenderPicker.Controls.Add(this.rbMale);
             this.gpGenderPicker.Location = new System.Drawing.Point(274, 96);
@@ -249,6 +254,8 @@ namespace ElmplotyeesManagment
             // 
             // lblBirthDate
             // 
+            this.lblBirthDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblBirthDate.AutoSize = true;
             this.lblBirthDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBirthDate.Location = new System.Drawing.Point(6, 102);
@@ -259,6 +266,8 @@ namespace ElmplotyeesManagment
             // 
             // txtEmail
             // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEmail.Location = new System.Drawing.Point(105, 74);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
@@ -269,6 +278,8 @@ namespace ElmplotyeesManagment
             // 
             // txtPhone
             // 
+            this.txtPhone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPhone.Location = new System.Drawing.Point(105, 49);
             this.txtPhone.Multiline = true;
             this.txtPhone.Name = "txtPhone";
@@ -279,6 +290,8 @@ namespace ElmplotyeesManagment
             // 
             // txtFullName
             // 
+            this.txtFullName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFullName.Location = new System.Drawing.Point(105, 24);
             this.txtFullName.Multiline = true;
             this.txtFullName.Name = "txtFullName";
@@ -289,6 +302,8 @@ namespace ElmplotyeesManagment
             // 
             // lbl_Email
             // 
+            this.lbl_Email.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Email.AutoSize = true;
             this.lbl_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Email.Location = new System.Drawing.Point(43, 77);
@@ -299,6 +314,8 @@ namespace ElmplotyeesManagment
             // 
             // lbl_Phone
             // 
+            this.lbl_Phone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Phone.AutoSize = true;
             this.lbl_Phone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Phone.Location = new System.Drawing.Point(43, 52);
@@ -309,6 +326,8 @@ namespace ElmplotyeesManagment
             // 
             // lblFullName
             // 
+            this.lblFullName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFullName.AutoSize = true;
             this.lblFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFullName.Location = new System.Drawing.Point(18, 27);
@@ -332,10 +351,11 @@ namespace ElmplotyeesManagment
             this.gpEmployeeCard.Controls.Add(this.lblAge);
             this.gpEmployeeCard.Controls.Add(this.lblPhone);
             this.gpEmployeeCard.Controls.Add(this.lblEmail);
+            this.gpEmployeeCard.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gpEmployeeCard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpEmployeeCard.Location = new System.Drawing.Point(12, 78);
+            this.gpEmployeeCard.Location = new System.Drawing.Point(3, 3);
             this.gpEmployeeCard.Name = "gpEmployeeCard";
-            this.gpEmployeeCard.Size = new System.Drawing.Size(377, 160);
+            this.gpEmployeeCard.Size = new System.Drawing.Size(392, 172);
             this.gpEmployeeCard.TabIndex = 10;
             this.gpEmployeeCard.TabStop = false;
             this.gpEmployeeCard.Text = "Employee Card";
@@ -418,6 +438,7 @@ namespace ElmplotyeesManagment
             // 
             // cbViewType
             // 
+            this.cbViewType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbViewType.FormattingEnabled = true;
             this.cbViewType.Items.AddRange(new object[] {
             "Details",
@@ -516,6 +537,7 @@ namespace ElmplotyeesManagment
             // 
             // lblView
             // 
+            this.lblView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblView.AutoSize = true;
             this.lblView.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblView.Location = new System.Drawing.Point(599, 19);
@@ -533,6 +555,9 @@ namespace ElmplotyeesManagment
             // 
             // listView1
             // 
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.colID,
             this.colFullName,
@@ -593,20 +618,37 @@ namespace ElmplotyeesManagment
             this.ImListGenderLarge.Images.SetKeyName(0, "man-removebg-preview.png");
             this.ImListGenderLarge.Images.SetKeyName(1, "woman-removebg-preview.png");
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.75F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.25F));
+            this.tableLayoutPanel1.Controls.Add(this.gpEmployeeCard, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.gpEmployeeInformation, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 72);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 178);
+            this.tableLayoutPanel1.TabIndex = 13;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 504);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.gpTools);
-            this.Controls.Add(this.gpEmployeeCard);
-            this.Controls.Add(this.gpEmployeeInformation);
             this.Controls.Add(this.MainLogo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Employees Manager";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.EmployeePicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MainLogo)).EndInit();
             this.gpEmployeeInformation.ResumeLayout(false);
@@ -617,6 +659,7 @@ namespace ElmplotyeesManagment
             this.gpEmployeeCard.PerformLayout();
             this.gpTools.ResumeLayout(false);
             this.gpTools.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -671,6 +714,7 @@ namespace ElmplotyeesManagment
         private System.Windows.Forms.Label CardPhone;
         private System.Windows.Forms.Label CardName;
         private System.Windows.Forms.Label CardID;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 
